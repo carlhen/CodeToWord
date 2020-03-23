@@ -1,0 +1,16 @@
+﻿<Application x:Class="CodeToWord.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:CodeToWord"
+             xmlns:converters="clr-namespace:CodeToWord.Converters">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <local:AppBootstrapper x:Key="bootstrapper" />
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <converters:BooleanErrorColorConverter x:Key="BooleanErrorColorConverter"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
