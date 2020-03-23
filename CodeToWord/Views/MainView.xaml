@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CodeToWord.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+             d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -56,7 +56,7 @@
         <DockPanel Grid.Column="1" Grid.Row="4" MaxWidth="600">
             <ProgressBar DockPanel.Dock="Top" MinHeight="20" x:Name="SaveProgress" Margin="0 0 0 5"/>
             <TextBlock DockPanel.Dock="Bottom" x:Name="SaveProgressStatus"
-                       Foreground="{Binding Path=SaveProgressStatusIsError,Converter={StaticResource BooleanErrorColorConverter}}">ffffff</TextBlock>
+                       Foreground="{Binding Path=SaveProgressStatusIsError,Converter={StaticResource BooleanErrorColorConverter}}"/>
         </DockPanel>
         
 

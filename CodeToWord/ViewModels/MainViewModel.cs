@@ -19,6 +19,7 @@ namespace CodeToWord.ViewModels
 
 		public MainViewModel()
 		{
+			SaveProgressStatus = "Ready.";
 		}
 
 		public string CodeText
