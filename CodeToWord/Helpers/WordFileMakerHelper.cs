@@ -64,11 +64,14 @@ namespace CodeToWord.Helpers
 
                 progress.Report((60, "Adding code lines to table.", false));
 
+                onePercent = 100 / codeLines.Length;
+
                 codeTable.Rows[1].Cells[3].Range.Text = codeLines[0];
                 for (int i = 1; i < codeLines.Length;i++)
                 {
                     codeTable.Rows.Add();
                     codeTable.Rows[i+1].Cells[3].Range.Text = codeLines[i];
+                    progress.Report((60 + Convert.ToInt32((i+1)* onePercent), $"Adding code lines to table. Line: {i + 1}/{codeLines.Length}", false));
                 }
 
                 progress.Report((90, "Saving new Word Document.", false));
