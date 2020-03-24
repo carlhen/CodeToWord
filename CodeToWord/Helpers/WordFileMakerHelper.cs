@@ -30,7 +30,7 @@ namespace CodeToWord.Helpers
                 
                 string[] codeLines = codeText.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
 
-                double onePrecent = 100/(codeLines.Length * 2);
+                double onePercent = 100/(codeLines.Length * 2);
 
                 int smallestAmountOfSpaces = codeLines[0].TakeWhile(char.IsWhiteSpace).Count();
                 IEnumerable<char> spaceToRemove = null;
@@ -47,16 +47,17 @@ namespace CodeToWord.Helpers
                         smallestAmountOfSpaces = whiteSpaceStartOfLine;
                         spaceToRemove = lineStartBlankSpaces; ;
                     }
-                    progress.Report((20 + Convert.ToInt32((onePrecent * (i + 1))), $"Processing code. Finding shortest spacing. Line: {i+1}/{codeLines.Length}", false));
+                    progress.Report((20 + Convert.ToInt32((onePercent * (i + 1))), $"Processing code. Finding shortest spacing. Line: {i+1}/{codeLines.Length}", false));
                 }
 
-                
-                int charsToRemoveIndex = spaceToRemove.Count();
+
+                int charsToRemoveIndex = 0;
+                foreach (var c in spaceToRemove) charsToRemoveIndex++;
 
                 for(int i = 0; i < codeLines.Length; i++)
                 {
                     codeLines[i] = codeLines[i].Remove(0, charsToRemoveIndex);
-                    progress.Report((20 + Convert.ToInt32((onePrecent * (i + 1 + codeLines.Length))), $"Processing code. Finding shortest spacing. Line: {i + 1}/{codeLines.Length}", false));
+                    progress.Report((20 + Convert.ToInt32((onePercent * (i + 1 + codeLines.Length))), $"Processing code. Finding shortest spacing. Line: {i + 1}/{codeLines.Length}", false));
                 }
 
                 progress.Report((60, "Adding code lines to table.", false));
@@ -78,10 +79,7 @@ namespace CodeToWord.Helpers
             }
             catch
             {
-                if (application != null)
-                {
-                    application.Quit(false);
-                }
+                application?.Quit(false);
                 progress.Report((-1, "Creating Word Document Failed", true));
             }
         }

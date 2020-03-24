@@ -15,7 +15,7 @@ namespace CodeToWord.ViewModels
 		private string _saveLocation;
 		private int _saveProgress;
 		private string _saveProgressStatus;
-		private const string filter = "Word Document (*.docx)|*.docx";
+		private const string Filter = "Word Document (*.docx)|*.docx";
 
 		public MainViewModel()
 		{
@@ -76,9 +76,9 @@ namespace CodeToWord.ViewModels
 
 
 
-		public async Task SelectSaveLocation()
+		public void SelectSaveLocation()
 		{
-			SaveLocation = SaveFileDialogHelper.SelectNewSaveFileLocation(filter, SaveLocation);
+			SaveLocation = SaveFileDialogHelper.SelectNewSaveFileLocation(Filter, SaveLocation);
 		}
 
 		public bool CanSave
