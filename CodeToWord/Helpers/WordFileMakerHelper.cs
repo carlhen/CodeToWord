@@ -27,8 +27,10 @@ namespace CodeToWord.Helpers
 
                 progress.Report((20, "Processing code. Removing unnecessary spacing.", false));
 
-                
-                string[] codeLines = codeText.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                // THANKS: https://stackoverflow.com/a/1547483/11345730
+                string[] codeLines = codeText.Split(
+                    new[] { "\r\n", "\r", "\n" },
+                    StringSplitOptions.None);
 
                 double onePercent = 100/(codeLines.Length * 2);
 
